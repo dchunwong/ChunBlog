@@ -43,7 +43,7 @@ function update(callback){
 }
 
 app.get('/', function(req, res){
-	update(res.render('posts', {posts:posts}));
+	res.render('posts', {posts:posts});
 });
 
 app.use(function(req, res, next){
