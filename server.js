@@ -37,6 +37,7 @@ function update(callback){
 				content: data,
 				dateTime: date
 			});
+			console.log(posts);
 		}
 	});
 	return callback;
