@@ -2,10 +2,11 @@ extends layout
 block content
 	each post, i in posts
 		article
-			h1= post.title
+			h1.title= post.title
 			hr
 			.content 
 				p !{post.content}
 			.date
 				time= post.dateTime
 			div(style="clear: both")
+	script(src="js/posts.js")
