@@ -6,7 +6,6 @@ var app = express();
 var fs = require('fs');
 
 var posts = [];
-var titles = [];
 
 app.set('port', process.env.PORT || 3000);
 
@@ -19,18 +18,23 @@ app.use(express.static(path.join(__dirname, 'public')));
 function update(callback){
 	fs.readFile('posts/setup.txt', function(e, data){
 		if(e){console.log(e);}
-		titles = data.toString().split(/\r\n|\n/);
+		postData = data.toString().split(/\r\n|\n/);
+		console.log(postData);
+		if(postData.length%2 != 1){
+			posts.push({title:"ERROR IN SETUP.TXT"});
+			return;
+		}
 		console.log("updating");
-		console.log(titles);
-		posts = [];
-		for(var i = 0; i < titles.length; i++){
-			if(titles[i].trim()=="" || !fs.existsSync('posts/'+titles[i]+'.html')){
+		for(var i = 0; i < postData.length; i+=3){
+			title = postData[i+1];
+			date = postData[i];
+			console.log(title);
+			if(title.trim()=="" || !fs.existsSync('posts/'+title+'.html')){
 				continue;
 			}
-			var date = fs.statSync('posts/'+titles[i]+'.html').mtime;
-			var data = fs.readFileSync('posts/'+titles[i]+'.html', "utf-8");
+			var data = fs.readFileSync('posts/'+title+'.html', "utf-8");
 			posts.push({
-				title: titles[i],
+				title: title,
 				content: data,
 				dateTime: date
 			});
@@ -48,8 +52,7 @@ app.use(function(req, res, next){
 	res.render('404');
 });
 
-http.createServer(app).listen(app.get('port'), function(){
+update(http.createServer(app).listen(app.get('port'), function(){
 	console.log('Listening on port ' + app.get('port'));
-	update();
-});
+}));
 
