@@ -6,7 +6,7 @@ var app = express();
 var fs = require('fs');
 
 var posts = [];
-var titles = 
+var titles = [];
 
 app.set('port', process.env.PORT || 3000);
 
@@ -19,13 +19,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 function update(callback){
 	fs.readFile('posts/setup.txt', function(e, data){
 		if(e){console.log(e);}
-		var temp = data.toString().split("\r\n");
-		if(temp.toString() == titles.toString()){
-			return callback;
-		}
+		titles = data.toString().split("\r\n");
 		console.log("updating");
+		console.log(titles);
 		posts = [];
-		titles = temp;
 		for(var i = 0; i < titles.length; i++){
 			if(titles[i].trim()=="" || !fs.existsSync('posts/'+titles[i]+'.html')){
 				continue;
@@ -37,7 +34,6 @@ function update(callback){
 				content: data,
 				dateTime: date
 			});
-			console.log(posts);
 		}
 	});
 	return callback;
