@@ -19,7 +19,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 function update(callback){
 	fs.readFile('posts/setup.txt', function(e, data){
 		if(e){console.log(e);}
-		titles = data.toString().split("\r\n");
+		titles = data.toString().split(/\r\n|\n/);
 		console.log("updating");
 		console.log(titles);
 		posts = [];
