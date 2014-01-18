@@ -20,10 +20,6 @@ function update(callback){
 		if(e){console.log(e);}
 		postData = data.toString().split(/\r\n|\n/);
 		console.log(postData);
-		if(postData.length%2 != 1){
-			posts.push({title:"ERROR IN SETUP.TXT"});
-			return;
-		}
 		console.log("updating");
 		for(var i = 0; i < postData.length; i+=3){
 			title = postData[i+1];
