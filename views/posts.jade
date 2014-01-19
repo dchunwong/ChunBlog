@@ -3,6 +3,7 @@ block content
 	each post, i in posts
 		article
 			h1.title= post.title
+			.collapse &ndash;
 			hr
 			.content 
 				p !{post.content}
