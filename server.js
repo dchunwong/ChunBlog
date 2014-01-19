@@ -25,7 +25,10 @@ function update(callback){
 			title = postData[i+1];
 			date = postData[i];
 			console.log(title);
-			if(title.trim()=="" || !fs.existsSync('posts/'+title+'.html')){
+			if(title.trim()==""){
+				continue;
+			} if (!fs.existsSync('posts/'+title+'.html')){
+				console.log("Post not found");
 				continue;
 			}
 			var data = fs.readFileSync('posts/'+title+'.html', "utf-8");
