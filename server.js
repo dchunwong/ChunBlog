@@ -41,10 +41,28 @@ function update(callback){
 	});
 	return callback;
 }
-
+function findPost(post){
+	var postObj;
+	for(var i = 0; i<posts.length; i++){
+		if(posts[i].title == post){
+			postObj = posts[i];
+			break;
+		}
+		else{
+			console.log(posts[i].title+" : "+post);
+		}
+	}
+	if(!postObj){
+		postObj = {title:'404', content:"Post not found!"};
+	}
+	return postObj;
+}
 app.get('/', function(req, res){
 	res.render('posts', {posts:posts});
 });
+app.get('/post/:postname', function(req, res){
+	res.render('posts', {posts:[findPost(req.params.postname)]});
+})
 
 app.use(function(req, res, next){
  	res.status(404);
