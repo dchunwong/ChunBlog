@@ -37,8 +37,8 @@
 		font-family: "Source Sans Pro", serif;
 		margin-top: 5px;
 		vertical-align: top;
-		font-size: 16px;
-		line-height: 1.5em;
+		font-size: 24px;
+		line-height: 1.4em;
 	}
 	time{
 		font-family: "Source Sans Pro", sans-serif;
@@ -91,7 +91,7 @@
 		display: inline;	
 	}
 	#container{
-		max-width: 40em;
+		max-width: 50em;
 		margin-left: auto;
 		margin-right: auto;
 		transition: linear .1s;
@@ -119,10 +119,10 @@
 	strong{
 		font-weight: 600;
 	}
-	@media (max-width: 1070px){
+	@media (max-width: 1280px){
 		#sidebar{
 			position: relative;
-			max-width: 40em;
+			max-width: 50em;
 			margin-bottom: 10px;
 			padding: 0px;
 
