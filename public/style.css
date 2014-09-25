@@ -9,9 +9,7 @@
 		
 	}
 	body{
-		background-image: url('pics/stripe2.png');
-		background-repeat: repeat;
-		background-attachment: fixed;
+		background-color: OldLace;
 	}
 	h1, h2{
 		font-family: 'Roboto Slab', serif;
@@ -66,13 +64,6 @@
 	.artpic{
 		box-shadow: 3px 3px 5px #A0A0A0;
 		transition: linear .1s;
-	}
-	.artpic:hover{
-		-webkit-transform: rotate(1deg);
-		-moz-transform: rotate(1deg);
-		-o-transform: rotate(1deg);
-		-ms-transform: rotate(1deg);
-		transform: rotate(1deg);
 	}
 	.date{
 		padding-right: 5px;
